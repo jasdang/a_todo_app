@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "start": "nodemon --ignore dist -e ts --verbose --exec \"yarn compile\"",
+    "compile": "tsc && node dist/index.js"
+  },
+  "dependencies": {
+    "@types/koa": "^2.13.3",
+    "@types/koa-router": "^7.4.2",
+    "koa": "^2.13.1",
+    "koa-router": "^10.0.0",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.2"
+  }
+}
