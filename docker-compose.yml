@@ -1,0 +1,54 @@
+version: "3.9"
+services:
+  nginx:
+    image: nginx
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - main
+    depends_on:
+      - frontend
+      - backend
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    platform: linux/amd64
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    networks:
+      - main
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
+  backend:
+    platform: linux/amd64
+    build:
+      context: ./backend
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend/src:/usr/src/app/src
+    networks:
+      - main
+    environment:
+      - DATABASE_URL=mysql://root:rootpass@db/tododb
+    depends_on:
+      - db
+  frontend:
+    platform: linux/amd64
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile.dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+    networks:
+      - main
+
+networks:
+  main:
