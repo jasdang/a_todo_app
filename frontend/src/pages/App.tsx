@@ -1,11 +1,13 @@
-import './App.css';
+import './App.css'
+import Input from '../components/Input'
 
 function App() {
   return (
     <div className="App">
-      TODO APP
+      <h1>TODO APP</h1>
+      <Input />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
