@@ -3,13 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.23",
     "@types/node": "^15.12.2",
     "@types/react": "^17.0.11",
     "@types/react-dom": "^17.0.7",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -19,10 +17,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pretty": "yarn prettier --write .",
-    "lint": "yarn run eslint src/ --fix --ext .tsx"
+    "pretty": "yarn run prettier --config .prettierrc.yml --check \"src/*\"",
+    "lint": "yarn run eslint src/ --ext .tsx && yarn run pretty && tsc --noEmit",
+    "fix": "yarn run eslint src/ --fix --ext .tsx && yarn run prettier --config .prettierrc.yml --write \"src/*\""
   },
   "browserslist": {
     "production": [

@@ -2,16 +2,18 @@ import React, { useState } from 'react'
 
 const Input = () => {
   const [description, setDescription] = useState<string>('')
+
+  const clearInput = () => {
+    setDescription('')
+  }
+
   const handleSubmit = (e: any) => {
     e.preventDefault()
     const target = e.target as HTMLFormElement
     const data = new FormData(target)
     console.log(description)
+    console.log(data)
     clearInput()
-  }
-
-  const clearInput = () => {
-    setDescription('')
   }
 
   const handleChange = (e: any) => {
