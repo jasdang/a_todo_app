@@ -7,6 +7,7 @@
     "fix": "yarn run eslint src/ --fix --ext .ts && yarn run prettier --config .prettierrc.yml --write \"src/*\""
   },
   "dependencies": {
+    "knex": "^0.21.20",
     "koa": "^2.13.1",
     "koa-router": "^10.0.0",
     "nodemon": "^2.0.7",
