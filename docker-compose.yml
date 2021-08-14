@@ -23,6 +23,9 @@ services:
       - main
     volumes:
       - ./database:/docker-entrypoint-initdb.d
+      - "./data:/var/lib/mysql"
+    ports:
+      - "3306:3306"
   backend:
     platform: linux/amd64
     build:
