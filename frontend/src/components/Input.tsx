@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-// diddidididd
-//s ssjsak
+
 const Input = () => {
   const [description, setDescription] = useState<string>('')
 
